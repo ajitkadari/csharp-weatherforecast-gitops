@@ -26,7 +26,7 @@ spec:
         carto.run/workload-name: csharp-weather
     spec:
       containers:
-      - image: ajtanzuregistry.azurecr.io/workloads/csharp-weather-workloads@sha256:2f7c57d33415798a929ec58b82e59e05b713902c43e02988b5f5f9e487efcf71
+      - image: ajtanzuregistry.azurecr.io/workloads/csharp-weather-workloads@sha256:84a4e9a73a0da3152a8e24e6948c75b7b1a78d68e83b79ec2d942ce85977cdb1
         name: workload
         resources: {}
         securityContext:
