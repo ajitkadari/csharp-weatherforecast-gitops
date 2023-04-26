@@ -5,9 +5,9 @@ metadata:
   annotations:
     ootb.apps.tanzu.vmware.com/servicebinding-workload: "true"
     ootb.apps.tanzu.vmware.com/apidescriptor-ref: "true"
+    kapp.k14s.io/change-rule: upsert after upserting servicebinding.io/ServiceBindings
   labels:
     app.kubernetes.io/part-of: csharp-weather
-    apps.tanzu.vmware.com/has-tests: "true"
     apps.tanzu.vmware.com/workload-type: web
     app.kubernetes.io/component: run
     carto.run/workload-name: csharp-weather
@@ -16,17 +16,19 @@ spec:
     metadata:
       annotations:
         autoscaling.knative.dev/minScale: "1"
-        conventions.carto.run/applied-conventions: appliveview-sample/app-live-view-appflavour-check
+        conventions.carto.run/applied-conventions: |-
+          appliveview-sample/app-live-view-appflavour-check
+          spring-boot-convention/auto-configure-actuators-check
+          spring-boot-convention/app-live-view-appflavour-check
         developer.conventions/target-containers: workload
       labels:
         app.kubernetes.io/component: run
         app.kubernetes.io/part-of: csharp-weather
-        apps.tanzu.vmware.com/has-tests: "true"
         apps.tanzu.vmware.com/workload-type: web
         carto.run/workload-name: csharp-weather
     spec:
       containers:
-      - image: ajtanzuregistry.azurecr.io/workloads/csharp-weather-workloads@sha256:84a4e9a73a0da3152a8e24e6948c75b7b1a78d68e83b79ec2d942ce85977cdb1
+      - image: ajtanzuregistry.azurecr.io/workloads/csharp-weather-workloads@sha256:4893dd8f9e2b69af3280af45bfaff30d4cedb59c32bb31bc1f37155ca63731fa
         name: workload
         resources: {}
         securityContext:
